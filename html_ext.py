@@ -26,14 +26,21 @@ def extract(link_list,string):
     return direct_link
                 
             
-            
+def print_out(link_name,link_list):
+    print("Link : "+link_name)
+    if len(link_list)!=0:
+        for i in link_list:
+            print(i)
+    else:
+        print("No File")
 def run():
     try:
         raw_url=input("Please Copy Your URL Here : ")
         page=url.urlopen(raw_url)
         html=page.read()
         link_list=find_video_tag(str(html))
-        print(extract(link_list,str(html)))
+        links=extract(link_list,str(html))
+        print_out(raw_url,links)
         run()
     except:
         print("Error In Input URL")
