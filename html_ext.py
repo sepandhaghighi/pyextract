@@ -1,5 +1,5 @@
 import urllib.request as url
-
+import time
 video_type=[".mp4",".3gp",".wmv",".flv",".mkv",".swf"]
 def find_video_tag(string):
     link_list=[]
@@ -27,17 +27,19 @@ def extract(link_list,string):
                 
             
             
-            
-if __name__=="__main__":
+def run():
     try:
         raw_url=input("Please Copy Your URL Here : ")
-
         page=url.urlopen(raw_url)
         html=page.read()
         link_list=find_video_tag(str(html))
         print(extract(link_list,str(html)))
+        run()
     except:
         print("Error In Input URL")
+        run()
+if __name__=="__main__":
+    run()
     
             
             
